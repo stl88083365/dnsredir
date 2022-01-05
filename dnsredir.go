@@ -76,12 +76,14 @@ func (r *Dnsredir) ServeDNS(ctx context.Context, w dns.ResponseWriter, req *dns.
 
 	var reply *dns.Msg
 	var upstreamErr error
+	var tryCount int32
 	deadline := time.Now().Add(defaultTimeout)
 	for time.Now().Before(deadline) {
 		start := time.Now()
 
+		tryCount++
 		host := upstream.Select()
-		if host == nil {
+		if host == nil || tryCount > upstream.maxRetry {
 			log.Debug(errNoHealthy)
 			return dns.RcodeServerFailure, errNoHealthy
 		}
