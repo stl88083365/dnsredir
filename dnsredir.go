@@ -200,4 +200,3 @@ const (
 	defaultFailTimeout = 2000 * time.Millisecond
 	failureCheck       = 3
 )
-
