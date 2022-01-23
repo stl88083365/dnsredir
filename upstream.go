@@ -612,4 +612,3 @@ const (
 	minHcInterval     = 1 * time.Second
 	minExpireInterval = 1 * time.Second
 )
-
