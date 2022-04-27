@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/coredns/caddy v1.1.1
-	github.com/coredns/coredns v1.9.0
+	github.com/coredns/coredns v1.9.1
 	github.com/digineo/go-ipset/v2 v2.2.1
 	github.com/m13253/dns-over-https/v2 v2.3.0
 	github.com/mdlayher/netlink v1.5.0
