@@ -16,7 +16,7 @@ sniffer:
     - 'Mijia Cloud'
     - 'dlg.io.mi.com'
     - '+.apple.com'
-   # - '*.baidu.com'           
+   # - '*.baidu.com' 
   force-domain:
   #-'+'   #all 
     - 'google.com'
@@ -24,7 +24,7 @@ sniffer:
     - '*.youtube.com'
 dns:
   default-nameserver:
-  - 119.29.29.29
+  - 192.168.123.66
   - 223.5.5.5
   enable: true
   enhanced-mode: fake-ip
@@ -43,9 +43,10 @@ dns:
   - '*.blzstatic.cn'
   - '*.battle.net'
   fake-ip-range: 198.18.0.1/16
-  ipv6: true
+  ipv6: false
   listen: 0.0.0.0:53
   nameserver:
+  - 192.168.123.66:53
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
 external-controller: :9090
@@ -64,7 +65,8 @@ proxy-groups:
   type: select
   use:
   - All
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+- filter: "(x2.0|x2.5|x3.0)"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
   interval: 300
   name: 自动选择
   type: url-test
@@ -93,6 +95,18 @@ proxy-groups:
   type: select
 - icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
   name: 国内网站
+  proxies:
+  - DIRECT
+  - 手动切换
+  - 自动选择
+  - 故障转移
+  - 香港节点
+  - 日本节点
+  - 美国节点
+  - 台湾节点
+  type: select
+  - icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+  name: ChatGPT
   proxies:
   - DIRECT
   - 手动切换
@@ -407,6 +421,12 @@ rule-providers:
     path: ./ruleset/YouTube.yaml
     type: http
     url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml"
+  ChatGPT:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/ChatGPT.yaml
+    type: http
+#    url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml"
 rules:
 - RULE-SET,AmazonPrimeVideo,AmazonPrimeVideo
 - RULE-SET,HBO,HBO
@@ -416,6 +436,7 @@ rules:
 - RULE-SET,Adblock-Domain,AdBlock
 - RULE-SET,YouTube,YouTube
 - RULE-SET,Netflix,NETFLIX
+- RULE-SET,ChatGPT,ChatGPT
 - RULE-SET,Disney,Disney+
 - RULE-SET,Apple,苹果服务
 - RULE-SET,Microsoft,微软服务
