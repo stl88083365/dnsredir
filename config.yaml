@@ -65,8 +65,7 @@ proxy-groups:
   type: select
   use:
   - All
-- filter: "(x2.0|x2.5|x3.0)"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
   interval: 300
   name: 自动选择
   type: url-test
